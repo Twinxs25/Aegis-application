@@ -1,0 +1,25 @@
+<MainMenu>:
+    name: "main"
+    MDBoxLayout:
+
+        orientation: "vertical"
+
+        MDToolbar:
+            title: "Main Menu"
+            pos_hint: {"top" : 2}
+            left_action_items: [["menu", lambda x: app.callback(x)]]
+            right_action_items: [["magnify", lambda x: app.search.open()]]
+           
+        Image:
+            source: "name.png"
+            size: 3, 3
+            halign: "center"
+            
+
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Website Archives"
+                icon: "language-python"
+                type: "bottom"
+                left_action_items: [["archive"]]
+                mode: "free-end"
