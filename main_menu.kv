@@ -1,0 +1,38 @@
+<MainMenu>:
+    MDNavigationLayout:
+    
+        ScreenManager:    
+            Screen:
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Main Menu"
+                        pos_hint: {"top" : 2}
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                        right_action_items: [["shield-plus", lambda x: app.search.open()]]
+                        
+                    Image:
+                        source: "name.png"
+                        size: 3, 3
+                        halign: "center"
+                    
+        # Navigation Drawer Panel
+        MDNavigationDrawer:
+            id: nav_drawer
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDRectangleFlatIconButton:
+                    icon: "logout"
+                    size_hint_x: .999
+                    text: 'Logout'
+                    on_release: app.log_out()
+
+                MDRectangleFlatIconButton:
+                    icon: "shield-check"
+                    size_hint_x: .999
+                    text: 'Block Sites'
+                    on_release: app.block_window()
+                Widget:
+            # Add Navigation Drawer Panel Content here.
+            
