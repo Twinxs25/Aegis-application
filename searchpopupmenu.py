@@ -8,8 +8,16 @@ class SearchPopupMenu(MDInputDialog):
     def __init__(self):
         super().__init__()
         self.size = [.9, .3]
-        self.events_callback = self.callback
+        self.events_callback = self.block
 
-    def callback(self, *args):
-        website_url = self.text_field.text
-        print(website_url)
+    def block(self, *args):
+        website_input = self.text_field.text
+        print(website_input + " is blocked")
+        redirect = "127.0.0.1"
+        host_path = "C:\Windows\System32\drivers\etc\hosts"
+        with open(host_path, "r+") as file:
+            content = file.read()
+            if website_input in content:
+                pass
+            else:
+                file.write("\n" + redirect + "\t" + website_input + "\n")
